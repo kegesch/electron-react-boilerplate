@@ -2,6 +2,7 @@ const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { spawn } = require('child_process')
+const ElectronNativePlugin = require("electron-native-plugin");
 
 // Any directories you will be adding code/files into, need to be added to this array so webpack will pick them up
 const defaultInclude = path.resolve(__dirname, 'src')
@@ -16,7 +17,16 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        use: ["source-map-loader"],
+        use: [
+          "electron-native-patch-loader",
+          {
+            loader: "electron-native-loader",
+            options: {
+              outputPath: path.resolve(__dirname, 'dist')
+            }
+          },
+          "source-map-loader"
+        ],
         enforce: "pre"
       }
     ]
@@ -27,6 +37,7 @@ module.exports = {
   target: 'electron-renderer',
   plugins: [
     new HtmlWebpackPlugin(),
+    new ElectronNativePlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development')
     })
@@ -49,4 +60,4 @@ module.exports = {
       .on('error', spawnError => console.error(spawnError))
     }
   }
-}
+};

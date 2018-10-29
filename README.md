@@ -14,7 +14,7 @@ Minimal Electron, React, TypeScript and Webpack boilerplate to help you get star
 #### Clone this repo
 
 ```
-git clone --depth=1 https://github.com/Y0nnyy/electron-react-webpack-typescript-boilerplate.git
+git clone --depth=1 https://github.com/Y0nnyy/electron-react-boilerplate.git
 ```
 
 #### Install dependencies

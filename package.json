@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "electron": "^3.0.6",
+    "node-mac-notifier": "^1.1.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0"
   },
@@ -55,6 +56,10 @@
     "@types/react-dom": "^16.0.9",
     "babel-loader": "^8.0.4",
     "babili-webpack-plugin": "^0.1.2",
+    "electron-native-loader": "^0.3.0",
+    "electron-native-patch-loader": "^0.3.0",
+    "electron-native-plugin": "^0.3.0",
+    "electron-rebuild": "^1.8.2",
     "electron-packager": "^12.2.0",
     "html-webpack-plugin": "^3.2.0",
     "source-map-loader": "^0.2.4",
