@@ -1,11 +1,10 @@
-const webpack = require('webpack')
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { spawn } = require('child_process')
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ElectronNativePlugin = require("electron-native-plugin");
 
 // Any directories you will be adding code/files into, need to be added to this array so webpack will pick them up
-const defaultInclude = path.resolve(__dirname, 'src')
+const defaultInclude = path.resolve(__dirname, '../src')
+const build = path.resolve(__dirname, '../build');
 
 module.exports = {
   module: {
@@ -22,42 +21,43 @@ module.exports = {
           {
             loader: "electron-native-loader",
             options: {
-              outputPath: path.resolve(__dirname, 'dist')
+              outputPath: build
             }
           },
           "source-map-loader"
         ],
         enforce: "pre"
+      },
+      {
+        test: /\.node$/,
+        use: "electron-native-loader"
       }
     ]
   },
+  output: {
+    path: build,
+    filename: "[name].js",
+    publicPath: './'
+  },
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.jsx', '.json']
+  },
+  node: {
+    __dirname: false,
+    __filename: false
   },
   target: 'electron-renderer',
   plugins: [
     new HtmlWebpackPlugin(),
     new ElectronNativePlugin(),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
-    })
   ],
-  devtool: 'cheap-source-map',
-  devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
-    stats: {
-      colors: true,
-      chunks: false,
-      children: false
-    },
-    before() {
-      spawn(
-        'electron',
-        ['.'],
-        { shell: true, env: process.env, stdio: 'inherit' }
-      )
-      .on('close', code => process.exit(0))
-      .on('error', spawnError => console.error(spawnError))
-    }
+  stats: {
+    colors: true,
+    children: false,
+    chunks: false,
+    modules: false
+  },
+  externals: {
+    bindings: 'require("bindings")'
   }
 };
