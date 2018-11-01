@@ -6,6 +6,8 @@ builds/
 #################################
 .tmp/
 dist/
+build/
+builds/
 node_modules/
 *.compiled.*
 
@@ -52,3 +54,7 @@ ehthumbs.db
 # Windows shortcuts #
 #####################
 *.lnk
+
+# IntelliJ #
+############
+.idea/

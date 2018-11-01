@@ -5,7 +5,7 @@
     "target": "es2015",
     "moduleResolution": "node",
     "pretty": true,
-    "outDir": "./dist/",
+    "outDir": "./build/",
     "sourceMap": true,
     "noImplicitAny": true,
     "jsx": "react"
