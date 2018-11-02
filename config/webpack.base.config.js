@@ -48,7 +48,9 @@ module.exports = {
   target: 'electron-renderer',
   plugins: [
     new HtmlWebpackPlugin(),
-    new ElectronNativePlugin(),
+    new ElectronNativePlugin({
+      optionalDependencies: true
+    }),
   ],
   stats: {
     colors: true,
