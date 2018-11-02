@@ -20,7 +20,7 @@ const config = {
       chunks: false,
       children: false
     },
-    before() {
+    before: function () {
       spawn(
         'electron',
         ['.'],

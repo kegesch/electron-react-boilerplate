@@ -47,12 +47,13 @@
   "dependencies": {
     "bindings": "TooTallNate/node-bindings#pull/40/head",
     "electron": "^3.0.6",
-    "node-mac-notifier": "^1.1.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-decorators": "^7.1.2",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.1.0",
     "@types/react": "^16.4.18",
