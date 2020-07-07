@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "bindings": "TooTallNate/node-bindings#pull/40/head",
-    "electron": "^3.0.6",
+    "electron": "^7.2.4",
     "react": "^16.6.0",
     "react-dom": "^16.6.0"
   },
